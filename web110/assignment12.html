@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment 12 - JavaScript &amp; Canvas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Empty top-level heading populated via JavaScript -->
+  <h1 id="student-name"></h1>
+
+  <!-- Paragraph populated with current date and time via JavaScript -->
+  <p id="current-datetime"></p>
+
+  <!-- Summary paragraph -->
+  <p>
+    While completing this assignment, I learned how to use JavaScript to dynamically manipulate the Document Object Model (DOM) by inserting text and real-time date objects into HTML elements after a page loads. I also explored the HTML5 canvas element and its 2D rendering context to programmatically draw text and geometric shapes. In my current and future work, I can apply these foundational scripting skills to build interactive user interfaces, display dynamic timestamps or user-specific greetings, and create custom data visualizations directly in the browser without relying on external plugins.
+  </p>
+
+  <hr>
+
+  <!-- Extra Credit 1: Canvas with Name -->
+  <h2>Extra Credit: Canvas Text</h2>
+  <canvas id="nameCanvas" width="400" height="100" style="border: 1px solid #000000;">
+  </canvas>
+
+  <!-- Extra Credit 2: Canvas with Shapes & Lines -->
+  <h2>Extra Credit: Canvas Shapes</h2>
+  <canvas id="shapeCanvas" width="400" height="200" style="border: 1px solid #000000;">
+    Your browser does not support the HTML canvas tag.
+  </canvas>
+
+  <script>
+    // 1. Display your name in the h1 heading
+    document.getElementById("student-name").innerHTML = AJ Margolis;
+
+    // 2. Display current date and time in the paragraph
+    const now = new Date();
+    document.getElementById("current-datetime").innerHTML = now;
+
+    // 3. Extra Credit: Write your name on the first canvas
+    const c1 = document.getElementById("nameCanvas");
+    const ctx1 = c1.getContext("2d");
+    ctx1.font = "28px Arial";
+    ctx1.fillStyle = "#1a5276";
+    ctx1.fillText("Your Name", 25, 60);
+
+    // 4. Extra Credit: Draw a line, square, and circle on the second canvas
+    const c2 = document.getElementById("shapeCanvas");
+    const ctx2 = c2.getContext("2d");
+
+    // Draw a filled square
+    ctx2.fillStyle = "#2e86c1";
+    ctx2.fillRect(30, 50, 80, 80);
+
+    // Draw a circle
+    ctx2.beginPath();
+    ctx2.arc(200, 90, 40, 0, 2 * Math.PI);
+    ctx2.fillStyle = "#28b463";
+    ctx2.fill();
+    ctx2.stroke();
+
+    // Draw a diagonal line
+    ctx2.beginPath();
+    ctx2.moveTo(280, 40);
+    ctx2.lineTo(370, 140);
+    ctx2.lineWidth = 4;
+    ctx2.strokeStyle = "#c0392b";
+    ctx2.stroke();
+  </script>
+
+</body>
+</html>
